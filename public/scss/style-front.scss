@@ -1,0 +1,42 @@
+@import '_variable.scss';
+
+body{
+    // background: url(../images/fabric_1.webp);
+    background-color:white;
+    font-family:  'Poppins', sans-serif;
+    color: $textColor;
+    @for $i from 1 through 6 {
+
+        h#{$i}{
+
+                font-family: 'Montserrat', sans-serif;;
+        }
+    }
+       .img-30{
+        width: 30%;
+       }
+       .cursor-pointer{
+        cursor: pointer;
+       }
+       .img-form{
+  
+
+}
+.custom-card img {
+        /* width: 100%; Images prenant la largeur totale de la carte */
+       /*  height: auto; Hauteur automatique pour préserver les proportions */
+    }
+
+    .custom-card {
+        /* width: 80%; Cartes prenant la largeur totale de leur conteneur */
+        /* max-width: 300px; Largeur maximale des cartes */
+      /* Marge autour des cartes */
+        // margin: 0px 0px 10 10px;
+    }
+
+    .span-bold{
+        font-weight:500;
+        color: black;
+    }
+}
+
