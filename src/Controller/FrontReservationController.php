@@ -22,7 +22,7 @@ class FrontReservationController extends AbstractController
         if(is_null($user)){
             // $this->addFlash()
             // dd("Vous devez être connectés pour réserver");
-            $this->addFlash("success", "Votre réservation a bien été prise en compte");
+            $this->addFlash("erreur", "Vous devez avoir un compte pour pouvoir réserver une chambre");
             return $this->redirectToRoute("app_home");
         }
        // On crée la réservation
@@ -38,11 +38,11 @@ if ($form->isSubmitted() && $form->isValid()) {
     $dateFin = $form->get("dateFin")->getData();
 
     // on vérifie si la date de début est dans le futur
-    $now = new \DateTime();
-    if ($dateDebut < $now) {
-        $this->addFlash("erreur", "La date de réservation ne peut pas être dans le passé.");
-        return $this->redirectToRoute("app_home"); 
-    }
+    // $now = new \DateTime();
+    // if ($dateDebut < $now) {
+    //     $this->addFlash("erreur", "La date de réservation ne peut pas être dans le passé.");
+    //     return $this->redirectToRoute("app_home"); 
+    // }
 
     $diff = $dateDebut->diff($dateFin);
     $nbJour = $diff->format("%a");
@@ -50,9 +50,8 @@ if ($form->isSubmitted() && $form->isValid()) {
     // Set the price and persist the reservation
     $reservation->setPrix($room->getPrix() * $nbJour);
     $entityManagerInterface->persist($reservation);
-    $this->addFlash("success", "Votre réservation a bien été prise en compte");
     $entityManagerInterface->flush();
-    
+    $this->addFlash("success", "Votre réservation a bien été prise en compte");
     return $this->redirectToRoute("app_home");
 }
 

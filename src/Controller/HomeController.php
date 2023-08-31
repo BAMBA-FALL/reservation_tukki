@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Repository\CarouselRepository;
 use App\Repository\HomeRepository;
+use App\Repository\HotelRepository;
+use App\Repository\RoomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,10 +14,11 @@ class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     #[Route('/home', name: 'app_home2')]
-    public function index(CarouselRepository $carouselRepository, HomeRepository $homeRepository): Response
+    public function index(CarouselRepository $carouselRepository, HomeRepository $homeRepository, RoomRepository $roomRepository): Response
     {
         # One recupère la home qui a la propriété isActive à la valeur true
         $home = $homeRepository->findOneBy(["isActive"=>true]);
+        $rooms = $roomRepository->findAll();
         #on appelle dd pour voir les prorpiété de notre home
         // dd($home);
         # One recupère les carousel qui a la propriété isActive à la valeur true et la propriété tag à la valeur home
@@ -23,7 +26,9 @@ class HomeController extends AbstractController
         // dd($carousels);
         return $this->render('home/index.html.twig', [
             'home' => $home,
-            'carousels'=> $carousels
+            'carousels'=> $carousels,
+            'rooms'=> $rooms,
+            
 
         ]);
     }

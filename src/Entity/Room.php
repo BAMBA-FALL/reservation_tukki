@@ -21,6 +21,7 @@ class Room
 
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
+    
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -43,6 +44,12 @@ class Room
 
     #[ORM\OneToMany(mappedBy: 'room', targetEntity: Reservation::class, orphanRemoval: true)]
     private Collection $reservations;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $numeroChambre = null;
+
+
+
 
  // ====================================================== //
 // ==================== CONSTRUCTEUR ==================== //
@@ -198,6 +205,30 @@ public function  __toString():string
                 $reservation->setRoom(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNumeroChambre(): ?int
+    {
+        return $this->numeroChambre;
+    }
+
+    public function setNumeroChambre(?int $numeroChambre): static
+    {
+        $this->numeroChambre = $numeroChambre;
+
+        return $this;
+    }
+
+    public function getNumero(): ?int
+    {
+        return $this->numero;
+    }
+
+    public function setNumero(int $numero): static
+    {
+        $this->numero = $numero;
 
         return $this;
     }

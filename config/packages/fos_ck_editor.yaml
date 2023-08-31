@@ -1,4 +1,5 @@
+# config/packages/fos_ckeditor.yaml
 fos_ck_editor:
-  configs:
-    my_config:
-      toolbar: standard
+    configs:
+        main_config: 
+            toolbar: standard

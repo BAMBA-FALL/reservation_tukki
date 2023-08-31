@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Home;
 use App\Form\HomeType;
 use App\Repository\HomeRepository;
+use App\Repository\HotelRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +16,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminHomeController extends AbstractController
 {
     #[Route('/', name: 'app_admin_home_index', methods: ['GET'])]
-    public function index(HomeRepository $homeRepository): Response
+    public function index(HomeRepository $homeRepository, HotelRepository $hotelRepository): Response
     {
+        $hotel = $hotelRepository->findAll();
         return $this->render('admin_home/index.html.twig', [
             'homes' => $homeRepository->findAll(),
+            'hotels'=>'$hotels'
         ]);
     }
 

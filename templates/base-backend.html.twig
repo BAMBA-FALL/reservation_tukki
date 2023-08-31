@@ -8,9 +8,11 @@ sur les liens de la _left-nav#}
 {% set roomActive = "" %}
 {% set reservationActive = "" %}
 
+
+
 {# on vérifie si un mot est contenu dans la route (barre d'adresse) si c'est le cas
 On modifie la valeur de la variable concernée#}
-{% if "dashboard" in app.request.pathinfo %}
+{# {% if "dashboard" in app.request.pathinfo %}
 {% set dashboardActive = "active" %}
 {% elseif "home" in app.request.pathinfo %}
 {% set homeActive = "active" %}
@@ -80,3 +82,104 @@ On modifie la valeur de la variable concernée#}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
+
+
+
+
+
+{# On crée des variables pour rendre dynamique l'attribution de la classe active sur les liens du menu de la _left-nav #}
+{# {% set dashboardActive = "" %}
+{% set homeActive = "" %}
+{% set carouselActive = "" %}
+{% set serviceActive = "" %}
+{% set typeServiceActive = "" %}
+{% set imageServiceActive = "" %} #}
+
+{# On modifie si un mot est contenu dans la route (barre d'adresse) et si c'est le cas on modifie la valeur de la variable concerné #}
+{# {% if "dashboard" in app.request.pathinfo %}
+{% set dashboardActive = "active" %}
+
+{% elseif "home" in app.request.pathinfo %}
+{% set homeActive = "active" %}
+
+{% elseif "carousel" in app.request.pathinfo %}
+{% set carouselActive = "active" %}
+
+{% elseif "service" in app.request.pathinfo %}
+{% set serviceActive = "active" %}
+
+{% elseif "typeService" in app.request.pathinfo %}
+{% set typeServiceActive = "active" %}
+
+{% elseif "imageService" in app.request.pathinfo %}
+{% set imageServiceActive = "active" %}
+
+{% else %}
+{% set dashboardActive = "active" %}
+{% endif %} #}
+
+{# 
+<nav id="sidebar" class="sidebar js-sidebar">
+	<div class="sidebar-content js-simplebar">
+		<a class="sidebar-brand" href="{{ path('app_admin_dashboard') }}">
+			<span class="align-middle">VEREX Admin</span>
+		</a>
+
+		<ul class="sidebar-nav">
+			<li class="sidebar-header">Contrôles</li>
+
+			<li class="sidebar-item {{ dashboardActive }}">
+				<a class="sidebar-link" href="{{ path('app_admin_dashboard') }}">
+					<i class="align-middle" data-feather="sliders"></i>
+					<span class="align-middle">Dashboard</span>
+				</a>
+			</li>
+
+			<li class="sidebar-item {{ homeActive }}">
+				<a class="sidebar-link" href="{{ path('app_admin_home_index') }}">
+					<i class="align-middle" data-feather="home"></i>
+					<span class="align-middle">
+						Home
+					</span>
+				</a>
+			</li>
+
+			<li class="sidebar-item {{ carouselActive }}">
+				<a class="sidebar-link" href="{{ path('app_admin_carousel_index') }}">
+					<i class="align-middle" data-feather="image"></i>
+					<span class="align-middle">
+						Carousel
+					</span>
+				</a>
+			</li>
+
+			<li class="sidebar-item {{ serviceActive }}">
+				<a class="sidebar-link" href="{{ path('app_admin_service_index') }}">
+					<i class="align-middle" data-feather="settings"></i>
+					<span class="align-middle">
+						Service
+					</span>
+				</a>
+			</li>
+
+			<li class="sidebar-item {{ typeServiceActive }}">
+				<a class="sidebar-link" href="{{ path('app_admin_type_service_index') }}">
+					<i class="align-middle" data-feather="grid"></i>
+					<span class="align-middle">
+						TypeService
+					</span>
+				</a>
+			</li>
+
+			<li class="sidebar-item {{ imageServiceActive }}">
+				<a class="sidebar-link" href="{{ path('app_admin_image_service_index') }}">
+					<i class="align-middle" data-feather="image"></i>
+					<span class="align-middle">
+						ImageService
+					</span>
+				</a>
+			</li>
+
+		</ul>
+	</div>
+</nav>  #}

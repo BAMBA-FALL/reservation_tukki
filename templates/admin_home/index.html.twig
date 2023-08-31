@@ -35,7 +35,6 @@
                 <td>{{ home.texte }}</td>
                 <td>{{ home.signature }}</td>
                 <td>{{ home.isActive ? 'Yes' : 'No' }}</td>
-             
                 <td>
                     <a href="{{ path('app_admin_home_show', {'id': home.id}) }}" class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
                     <a href="{{ path('app_admin_home_edit', {'id': home.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>

@@ -12,6 +12,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
@@ -23,6 +24,7 @@ class RoomType extends AbstractType
             ->add('isActive', CheckboxType::class,["required"=>false,"label"=>"Active", "attr"=>["form-check-input"] ,"row_attr"=>["class"=>"form-switch"]])
             ->add('titre', TextType::class,["required"=>true])
             ->add('description',CKEditorType::class,["required"=>true])
+            ->add('numeroChambre', NumberType::class, ["required"=>true, "label"=>"Numéro de la Chambre", "row_attr"=>["class"=>"mb-0"]])
             ->add('prix',MoneyType::class,["required"=>true])
             ->remove('slug')
             ->add('hotel',EntityType::class,["class"=>Hotel::class,"choice_label"=>"nom", "required"=>true])

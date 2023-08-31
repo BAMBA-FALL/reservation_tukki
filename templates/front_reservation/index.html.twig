@@ -24,10 +24,11 @@
          {# <h1>Formulaire de réservation</h1> #}
         <div class="shadow p-3 mb-5 bg-white rounded ml-5">
         <div class="mb-2"><span id="prix">{{ room.prix |format_currency ('EUR')}}</span>par nuit:</div>
+            <div id="total">Total:</div>
             {{ form_start(form) }}
             {{ form_widget(form) }}
            <button type="submit" class="btn btn-dark">Réserver</button>
-           <div id="total"><span class="span-bold">Total:</span></div>
+       
             {{ form_end(form) }}
             </div>
 
@@ -63,7 +64,6 @@ function calculPrix(){
 let dateArrivee = new Date($("#reservation_dateDebut").val());
 let dateDepart = new Date($("#reservation_dateFin").val());
 let currentDate = new Date();
-$("#tarif")
 if (dateDepart < dateArrivee) {
     alert("La date de départ ne doit pas être antérieure à la date d'arrivée");
 } else {
@@ -75,14 +75,14 @@ if (dateDepart < dateArrivee) {
 
     let total = $("#prix").html() * j;
     $("#total").html(total);
-}
+} 
 
 }
-$("#reservation_dateDebut").on("change", function(event){
+$("#reservation_dateDebut").on("change", function(){
 
     calculPrix();
 })
-$("#reservation_dateFin").on("change", function(event){
+$("#reservation_dateFin").on("change", function(){
 
     calculPrix();
 });

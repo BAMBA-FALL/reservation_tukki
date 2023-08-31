@@ -1,7 +1,3 @@
-
-{# <header class="header">
-  
-  </header> #}
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark navbar-fixed">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ path('app_home2')}}">TUKKI</a>
@@ -34,7 +30,7 @@
           {% if app.user is null %}
           <a class="nav-link" href="{{ path('app_register')}}">Inscription</a>
           {% else %}
-          <a class="nav-link" href="">Mon Compte</a>
+          <a class="nav-link" href="{{ path('app_front_user') }}">Mon Compte</a>
           {% endif %}
       </li>
       {# on vérifie si l'utilisateur est un admin #}
@@ -51,9 +47,6 @@
           <a class="nav-link" href="{{ path('app_login')}}">Connexion</a>
           {% endif %}
         </li>
-
-
-
       </ul>
     </div>
   </div>
