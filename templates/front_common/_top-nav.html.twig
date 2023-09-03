@@ -14,7 +14,7 @@
          {{render(controller('App\\Controller\\FrontHotelController::renderHotelDropDOown')) }}
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Restaurants</a>
+          <a class="nav-link" href="#"><i class="icon text-danger" data-feather="home"></i></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="">Plages</a>
@@ -25,11 +25,15 @@
         </li>
 
 
-
-      <li class="nav-item ms-lg-auto">
+ 
+      <li class="nav-item ms-lg-auto d-flex align-items-center">
           {% if app.user is null %}
           <a class="nav-link" href="{{ path('app_register')}}">Inscription</a>
           {% else %}
+          <span class="text-light me-3">{{ app.user.email}}</span>
+          {% if app.user.avatar is not null and app.user.avatar.imageName is not null %}
+          <img src="{{ asset('images/avatar/' ~ app.user.avatar.imageName) }}" alt="avatar" class="avatar">
+          {% endif %}
           <a class="nav-link" href="{{ path('app_front_user') }}">Mon Compte</a>
           {% endif %}
       </li>

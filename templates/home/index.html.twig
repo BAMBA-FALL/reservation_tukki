@@ -55,8 +55,8 @@
   </div>
 {% endif %}
       <div>
-        {% for room in rooms %}
-        {{ include  ('front_room/index.html.twig',{'room':room}) }}
+        {% for hotel in hotels %}
+        {{ include  ('front_hotel/index.html.twig',{'hotel':hotel}) }}
         {% endfor %}
         
         </div>
