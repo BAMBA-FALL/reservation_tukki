@@ -36,7 +36,7 @@ class Home
     #[Vich\UploadableField(mapping: 'home', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
-   
+
  // ====================================================== //
 // ===============GETTERS/SETTERS======================= //
 // ====================================================== //
