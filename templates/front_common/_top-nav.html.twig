@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark navbar-fixed">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ path('app_home2')}}">TUKKI</a>
+    <a class="navbar-brand" href="{{ path('app_home2')}}"><span class="grande-taille">TUKKI</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="{{ path('app_home2')}}">Accueil</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hotels</a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
          {{render(controller('App\\Controller\\FrontHotelController::renderHotelDropDOown')) }}
         </li>
         <li class="nav-item">
@@ -54,5 +54,6 @@
       </ul>
     </div>
   </div>
-
 </nav>  
+
+

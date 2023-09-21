@@ -26,33 +26,26 @@ class FrontReservationController extends AbstractController
             return $this->redirectToRoute("app_home");
         }
        // On crée la réservation
-$reservation = new Reservation();
-$reservation->setRoom($room);
-$reservation->setUser($user);
-$form = $this->createForm(ReservationType::class, $reservation);
-$form->handleRequest($request);
+       $reservation = new Reservation();
+       $reservation->setRoom($room);
+       $reservation->setUser($user);
+       $form = $this->createForm(ReservationType::class, $reservation);
+       $form->handleRequest($request);
+       //si lele formulaire est soumis 
+       if($form->isSubmitted() && $form->isValid()){
+           // dd($form->getData());
+           $dateDebut = $form->get("dateDebut")->getData();
+           // dd($dateDebut);
+           $dateFin = $form->get("dateFin")->getData();
+           $diff = $dateDebut->diff($dateFin);
+           $nbJour = $diff->format("%a");
+           // dd($nbJour);
+           $reservation->setPrix($room->getPrix()*$nbJour);
+           $entityManagerInterface->persist($reservation);
+           $this->addFlash("success", "Votre réservation a bien été prise en compte");
+           $entityManagerInterface->flush();
+           return $this->redirectToRoute("app_home");
 
-// si le formulaire est soumis
-if ($form->isSubmitted() && $form->isValid()) {
-    $dateDebut = $form->get("dateDebut")->getData();
-    $dateFin = $form->get("dateFin")->getData();
-
-    // on vérifie si la date de début est dans le futur
-    // $now = new \DateTime();
-    // if ($dateDebut < $now) {
-    //     $this->addFlash("erreur", "La date de réservation ne peut pas être dans le passé.");
-    //     return $this->redirectToRoute("app_home"); 
-    // }
-
-    $diff = $dateDebut->diff($dateFin);
-    $nbJour = $diff->format("%a");
-
-    // Set the price and persist the reservation
-    $reservation->setPrix($room->getPrix() * $nbJour);
-    $entityManagerInterface->persist($reservation);
-    $entityManagerInterface->flush();
-    $this->addFlash("success", "Votre réservation a bien été prise en compte");
-    return $this->redirectToRoute("app_home");
 }
 
 

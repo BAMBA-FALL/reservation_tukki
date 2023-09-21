@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarouselHotel{% endblock %}
+
+{% block body %}
+    <h1>CarouselHotel</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carousel_hotel.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ carousel_hotel.imageName }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ carousel_hotel.updatedAt ? carousel_hotel.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ carousel_hotel.titre }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ carousel_hotel.texte }}</td>
+            </tr>
+            <tr>
+                <th>RankNumber</th>
+                <td>{{ carousel_hotel.rankNumber }}</td>
+            </tr>
+            <tr>
+                <th>Tag</th>
+                <td>{{ carousel_hotel.tag }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ carousel_hotel.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_carousel_hotel_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_carousel_hotel_edit', {'id': carousel_hotel.id}) }}">edit</a>
+
+    {{ include('admin_carousel_hotel/_delete_form.html.twig') }}
+{% endblock %}

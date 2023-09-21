@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CarouselHotel{% endblock %}
+
+{% block body %}
+    <h1>Create new CarouselHotel</h1>
+
+    {{ include('admin_carousel_hotel/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_carousel_hotel_index') }}">back to list</a>
+{% endblock %}

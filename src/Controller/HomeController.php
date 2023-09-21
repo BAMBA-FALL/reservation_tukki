@@ -14,7 +14,7 @@ class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     #[Route('/home', name: 'app_home2')]
-    public function index(CarouselRepository $carouselRepository, HomeRepository $homeRepository,HotelRepository $hotelRepository): Response
+    public function index(CarouselRepository $carouselRepository, HomeRepository $homeRepository, HotelRepository $hotelRepository): Response
     {
         # One recupère la home qui a la propriété isActive à la valeur true
         $home = $homeRepository->findOneBy(["isActive"=>true]);
@@ -27,7 +27,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'home' => $home,
             'carousels'=> $carousels,
-            'hotels'=> $hotels,
+            'hotels'=>$hotels,
             
 
         ]);

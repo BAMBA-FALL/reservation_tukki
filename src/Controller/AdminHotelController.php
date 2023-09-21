@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Hotel;
 use App\Form\HotelType;
+use App\Repository\CarouselRepository;
 use App\Repository\HotelRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,16 +17,20 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class AdminHotelController extends AbstractController
 {
     #[Route('/', name: 'app_admin_hotel_index', methods: ['GET'])]
-    public function index(HotelRepository $hotelRepository): Response
+    public function index(HotelRepository $hotelRepository, CarouselRepository $carouselRepository): Response
     {
+        $carousels = $carouselRepository->findBy(["isActive"=>true, "tag"=>"hotel"], ["rankNumber"=>"ASC"]);
         return $this->render('admin_hotel/index.html.twig', [
             'hotels' => $hotelRepository->findAll(),
+            'hotel'=>'hotel',
+            'carousels'=> $carousels,
         ]);
     }
 
     #[Route('/new', name: 'app_admin_hotel_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $sluggerInterface): Response
     {
+       
         $hotel = new Hotel();
         $form = $this->createForm(HotelType::class, $hotel);
         $form->handleRequest($request);
@@ -42,6 +47,7 @@ class AdminHotelController extends AbstractController
         return $this->renderForm('admin_hotel/new.html.twig', [
             'hotel' => $hotel,
             'form' => $form,
+          
         ]);
     }
 

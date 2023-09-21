@@ -17,8 +17,8 @@ class HomeType extends AbstractType
     {
         $builder
         ->add('isActive', CheckboxType::class,["required"=>false, "label"=>"Active", "attr"=>["class"=>"form-check-input"], "row_attr"=>["class"=>"form-switch mb-2"]])
-        ->add('titre', TextType::class, ["required"=>true])
-        ->add('texte', TextareaType::class, ["required"=>true])
+        ->add('titre', TextType::class, ["required"=>false])
+        ->add('texte', TextareaType::class, ["required"=>false])
         ->add('signature', TextType::class, ["required"=>false])
         ->remove('imageName')
         ->add('imageFile', FileType::class, ["required"=>false, "label"=>"Image", "attr"=>["class"=>"form-control"]])

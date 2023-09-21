@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarouselHotel index{% endblock %}
+
+{% block body %}
+    <h1>CarouselHotel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>UpdatedAt</th>
+                <th>Titre</th>
+                <th>Texte</th>
+                <th>RankNumber</th>
+                <th>Tag</th>
+                <th>IsActive</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carousel_hotel in carousel_hotels %}
+            <tr>
+                <td>{{ carousel_hotel.id }}</td>
+                <td>{{ carousel_hotel.imageName }}</td>
+                <td>{{ carousel_hotel.updatedAt ? carousel_hotel.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ carousel_hotel.titre }}</td>
+                <td>{{ carousel_hotel.texte }}</td>
+                <td>{{ carousel_hotel.rankNumber }}</td>
+                <td>{{ carousel_hotel.tag }}</td>
+                <td>{{ carousel_hotel.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_carousel_hotel_show', {'id': carousel_hotel.id}) }}">show</a>
+                    <a href="{{ path('app_admin_carousel_hotel_edit', {'id': carousel_hotel.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_carousel_hotel_new') }}">Create new</a>
+{% endblock %}

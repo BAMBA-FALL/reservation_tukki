@@ -1,3 +1,45 @@
-<footer class="bg-dark text-light p-3 .footer">
-&copy; {{""|date('Y')}}
+<footer class="bg-dark text-light p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 style="font-size: 14px;">À propos de nous</h4>
+                <p style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget mauris ut augue imperdiet sagittis.</p>
+            </div>
+            <div class="col-md-3">
+                <h4 style="font-size: 14px;">Liens rapides</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" style="font-size: 12px;">Accueil</a></li>
+                    <li><a href="#" style="font-size: 12px;">Chambres</a></li>
+                    <li><a href="#" style="font-size: 12px;">Services</a></li>
+                    <li><a href="#" style="font-size: 12px;">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Section Réseaux Sociaux -->
+            <div class="col-md-3">
+                <h4 style="font-size: 14px;">Suivez-nous sur les réseaux sociaux</h4>
+                <ul class="list-unstyled list-inline">
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <!-- Ajoutez d'autres icônes et liens pour d'autres réseaux sociaux -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <h4 style="font-size: 14px;">Contactez-nous</h4>
+                <address style="font-size: 12px;">
+                    <p>123 Rue de l'Exemple</p>
+                    <p>12345 Ville Exemple</p>
+                    <p>Email: info@example.com</p>
+                    <p>Téléphone: +123 456 789</p>
+                </address>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-3" style="font-size: 12px;">
+        &copy; {{ ""|date('Y') }} Mon Entreprise. Tous droits réservés.
+    </div>
 </footer>
